@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: copy a file to remote server stapp01
+    copy:
+      src: /usr/src/sysops/blog.txt
+      dest: /opt/sysops/
+      owner: tony
+      group: tony
+      mode: "0655"
+    when: inventory_hostname == "stapp01"
+
+
+  - name: copy a file to remote server stapp01
+    copy:
+      src: /usr/src/sysops/story.txt
+      dest: /opt/sysops/
+      owner: steve
+      group: steve
+      mode: "0655"
+    when: inventory_hostname == "stapp02"
+
+  - name: copy a file to remote server stapp01
+    copy:
+      src: /usr/src/sysops/media.txt
+      dest: /opt/sysops/
+      owner: banner
+      group: banner
+      mode: "0655"
+    when: inventory_hostname == "stapp03"
